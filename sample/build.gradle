@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdk 33
+    compileSdk 34
     defaultConfig {
         applicationId "com.yalantis.ucrop.sample"
-        minSdkVersion 14
-        targetSdkVersion 33
-        versionCode 13
-        versionName "1.2.4"
+        minSdk 23
+        targetSdk 34
+        versionCode 1
+        versionName '1.0.0'
     }
     flavorDimensions "default"
     buildTypes {
@@ -31,6 +31,7 @@ android {
             buildConfigField("int","RequestMode", "2")
         }
     }
+    buildToolsVersion '34.0.0'
 }
 
 dependencies {

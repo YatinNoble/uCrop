@@ -2,12 +2,12 @@ apply plugin: 'com.android.library'
 apply from: '../mavenpush.gradle'
 
 android {
-    compileSdk 33
+    compileSdk 34
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 33
-        versionCode 27
-        versionName "2.2.9-native"
+        minSdk 23
+        targetSdk 34
+        versionCode 1
+        versionName '1.0'
 
         vectorDrawables.useSupportLibrary = true
     }
@@ -30,6 +30,7 @@ android {
     sourceSets.main {
         jni.srcDirs = []
     }
+    buildToolsVersion '34.0.0'
 
 }
 
