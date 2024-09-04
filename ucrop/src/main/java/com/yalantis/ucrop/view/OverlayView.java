@@ -3,6 +3,7 @@ package com.yalantis.ucrop.view;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
@@ -14,22 +15,19 @@ import android.view.View;
 
 import com.yalantis.ucrop.R;
 import com.yalantis.ucrop.callback.OverlayViewChangeListener;
+import com.yalantis.ucrop.util.BlackLineManager;
 import com.yalantis.ucrop.util.RectUtils;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+import java.util.HashMap;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.IntDef;
 import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
 
-/**
- * Created by Oleksii Shliama (https://github.com/shliama).
- * <p/>
- * This view is used for drawing the overlay on top of the image. It may have frame, crop guidelines and dimmed area.
- * This must have LAYER_TYPE_SOFTWARE to draw itself properly.
- */
+
 public class OverlayView extends View {
 
     public static final int FREESTYLE_CROP_MODE_DISABLE = 0;
@@ -89,7 +87,6 @@ public class OverlayView extends View {
 
     public OverlayView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        init();
     }
 
     public OverlayViewChangeListener getOverlayViewChangeListener() {
@@ -269,11 +266,6 @@ public class OverlayView extends View {
                 Math.min(mCropViewRect.width(), mCropViewRect.height()) / 2.f, Path.Direction.CW);
     }
 
-    protected void init() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR2) {
-            setLayerType(LAYER_TYPE_SOFTWARE, null);
-        }
-    }
 
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
@@ -469,12 +461,7 @@ public class OverlayView extends View {
         }
     }
 
-    /**
-     * This method draws crop bounds (empty rectangle)
-     * and crop guidelines (vertical and horizontal lines inside the crop bounds) if needed.
-     *
-     * @param canvas - valid canvas object
-     */
+
     protected void drawCropGrid(@NonNull Canvas canvas) {
         if (mShowCropGrid) {
             if (mGridPoints == null && !mCropViewRect.isEmpty()) {
@@ -499,6 +486,17 @@ public class OverlayView extends View {
 
             if (mGridPoints != null) {
                 canvas.drawLines(mGridPoints, mCropGridPaint);
+                Paint blackLinePaint = new Paint();
+                blackLinePaint.setColor(Color.parseColor("#059212"));
+                blackLinePaint.setStrokeWidth(5); // Adjust stroke width as needed
+                HashMap<String, Float> selectedCountryBlackLinePoint = BlackLineManager.INSTANCE.getSelectedCountryBlackLinePoint();
+                float imageHeight = selectedCountryBlackLinePoint.get(BlackLineManager.selectedImageHeight);
+                float topToHair = ((selectedCountryBlackLinePoint.get(BlackLineManager.selectedCountryHeight01) * mCropViewRect.height()) / imageHeight);
+                float hairToChin = topToHair + selectedCountryBlackLinePoint.get(BlackLineManager.selectedCountryHeight02) * mCropViewRect.height() / imageHeight;
+                if (topToHair != 0f && hairToChin != 0f) {
+                    canvas.drawLine(mCropViewRect.left, mCropViewRect.top + topToHair, mCropViewRect.right, mCropViewRect.top + topToHair, blackLinePaint);
+                    canvas.drawLine(mCropViewRect.left, mCropViewRect.top + hairToChin, mCropViewRect.right, mCropViewRect.top + hairToChin, blackLinePaint);
+                }
             }
         }
 
