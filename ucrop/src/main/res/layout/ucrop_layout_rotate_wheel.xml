@@ -13,7 +13,7 @@
         style="@style/ucrop_TextViewWidgetText"
         tools:text="100°" />
 
-    <com.yalantis.ucrop.view.widget.HorizontalProgressWheelView
+    <com.passport.photo.ucrop.view.widget.HorizontalProgressWheelView
         android:id="@+id/rotate_scroll_wheel"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -46,7 +46,7 @@
         <ImageView
             style="@style/ucrop_ImageViewWidgetIcon"
             android:src="@drawable/ucrop_ic_angle"
-            android:tint="@color/ucrop_color_widget_rotate_angle" />
+            app:tint="@color/ucrop_color_widget_rotate_angle" />
 
     </FrameLayout>
 

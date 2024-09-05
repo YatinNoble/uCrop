@@ -1,7 +1,8 @@
 <resources>
-
+    <string name="app_name">UCrop</string>
+    <integer name="ucrop_progress_loading_anim_time">1500</integer>
     <string name="ucrop_label_original">Original</string>
-    <string name="ucrop_label_edit_photo">Edit Photo</string>
+    <string name="ucrop_label_edit_photo">Crop image</string>
 
     <string name="ucrop_menu_crop">Crop</string>
 
@@ -10,5 +11,8 @@
     <string name="ucrop_rotate">Rotate</string>
     <string name="ucrop_scale">Scale</string>
     <string name="ucrop_crop">Crop</string>
-
+    <string name="ucrop_brightness">Brightness</string>
+    <string name="ucrop_contrast">Contrast</string>
+    <string name="ucrop_saturation">Saturation</string>
+    <string name="ucrop_sharpness">Sharpness</string>
 </resources>

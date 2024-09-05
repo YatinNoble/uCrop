@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
 
     <!--Palette-->
     <color name="ucrop_color_black">#000</color>
@@ -24,6 +26,7 @@
     <color name="ucrop_color_widget_text">@color/ucrop_color_blaze_orange</color>
     <color name="ucrop_color_progress_wheel_line">@color/ucrop_color_ebony_clay</color>
     <color name="ucrop_color_crop_background">@color/ucrop_color_black</color>
+    <color name="gray_32363f">#32363f</color>
 
     <!--Crop View-->
     <color name="ucrop_color_default_crop_grid">#80ffffff</color>
