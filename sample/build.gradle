@@ -2,6 +2,8 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdk 34
+    namespace = "com.yalantis.ucrop.sample"
+
     defaultConfig {
         applicationId "com.yalantis.ucrop.sample"
         minSdk 23
@@ -17,8 +19,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     lintOptions {
         abortOnError false
@@ -32,7 +34,9 @@ android {
         }
     }
     buildToolsVersion '34.0.0'
-
+    buildFeatures {
+        buildConfig = true // Enable the BuildConfig feature
+    }
 }
 
 dependencies {
