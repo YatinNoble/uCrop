@@ -839,16 +839,12 @@ public class UCropActivity extends AppCompatActivity {
         if (activity.isDestroyed() || activity.isFinishing()) return;
 
         Window window = activity.getWindow();
-        WindowCompat.setDecorFitsSystemWindows(window, false);
 
         WindowInsetsControllerCompat controller =
                 WindowCompat.getInsetsController(window, window.getDecorView());
 
-        // Set status bar icons to dark (on light background)
         controller.setAppearanceLightStatusBars(true);
-
-        // Set navigation bar icons to dark (on light background)
-        controller.setAppearanceLightNavigationBars(false);
+        controller.setAppearanceLightNavigationBars(true);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             // Disable navigation bar contrast enforcement
