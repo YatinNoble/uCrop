@@ -1,5 +1,6 @@
 package com.passport.photo.ucrop;
 
+import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -8,11 +9,14 @@ import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.graphics.PorterDuff;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -27,6 +31,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.transition.AutoTransition;
 import androidx.transition.Transition;
 import androidx.transition.TransitionManager;
@@ -119,6 +125,7 @@ public class UCropActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ucrop_activity_photobox);
+        setFullScreenTheme(this);
         final Intent intent = getIntent();
         setupViews(intent);
         setImageData(intent);
@@ -826,6 +833,32 @@ public class UCropActivity extends AppCompatActivity {
 
     protected void setResultError(Throwable throwable) {
         setResult(UCrop.RESULT_ERROR, new Intent().putExtra(UCrop.EXTRA_ERROR, throwable));
+    }
+
+    public static void setFullScreenTheme(Activity activity) {
+        if (activity.isDestroyed() || activity.isFinishing()) return;
+
+        Window window = activity.getWindow();
+        WindowCompat.setDecorFitsSystemWindows(window, false);
+
+        WindowInsetsControllerCompat controller =
+                WindowCompat.getInsetsController(window, window.getDecorView());
+
+        // Set status bar icons to dark (on light background)
+        controller.setAppearanceLightStatusBars(true);
+
+        // Set navigation bar icons to dark (on light background)
+        controller.setAppearanceLightNavigationBars(false);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            // Disable navigation bar contrast enforcement
+            window.setNavigationBarContrastEnforced(false);
+        } else {
+            window.setFlags(
+                    WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                    WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+            );
+        }
     }
 
 }
