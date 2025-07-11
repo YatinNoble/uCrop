@@ -849,11 +849,6 @@ public class UCropActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             // Disable navigation bar contrast enforcement
             window.setNavigationBarContrastEnforced(false);
-        } else {
-            window.setFlags(
-                    WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-                    WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-            );
         }
     }
 
