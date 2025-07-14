@@ -844,7 +844,7 @@ public class UCropActivity extends AppCompatActivity {
                 WindowCompat.getInsetsController(window, window.getDecorView());
 
         controller.setAppearanceLightStatusBars(true);
-        controller.setAppearanceLightNavigationBars(true);
+        controller.setAppearanceLightNavigationBars(false);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             // Disable navigation bar contrast enforcement

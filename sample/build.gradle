@@ -33,7 +33,7 @@ android {
             buildConfigField("int","RequestMode", "2")
         }
     }
-    buildToolsVersion '34.0.0'
+    buildToolsVersion '36.0.0'
     buildFeatures {
         buildConfig = true // Enable the BuildConfig feature
     }
