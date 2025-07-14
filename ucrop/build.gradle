@@ -2,14 +2,12 @@ apply plugin: 'com.android.library'
 apply plugin: 'org.jetbrains.kotlin.android'
 
 android {
-    compileSdk 34
+    compileSdk 36
     namespace = "com.passport.photo.ucrop"
 
     defaultConfig {
         minSdk 23
-        targetSdk 34
-        versionCode 1
-        versionName '1.0'
+        targetSdk 36
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
@@ -31,7 +29,7 @@ android {
     sourceSets.main {
         jni.srcDirs = []
     }
-    buildToolsVersion '34.0.0'
+    buildToolsVersion '36.0.0'
     kotlinOptions {
         jvmTarget = '17'
     }
@@ -42,10 +40,17 @@ android {
 }
 
 dependencies {
-    implementation "androidx.appcompat:appcompat:${androidx_appcompat_version}"
+    /*implementation "androidx.appcompat:appcompat:${androidx_appcompat_version}"
     implementation "androidx.exifinterface:exifinterface:${androidx_exifinterface_version}"
     implementation "androidx.transition:transition:${androidx_transition_version}"
     // OkHttp3 versions above 3.12.x don't support pre-Lollipop Android versions (API 21)
     implementation "com.squareup.okhttp3:okhttp:3.12.13"
-    implementation 'androidx.core:core-ktx:1.13.1'
+    implementation 'androidx.core:core-ktx:1.13.1'*/
+
+    implementation "androidx.appcompat:appcompat:${androidx_appcompat_version}"
+    implementation "androidx.exifinterface:exifinterface:${androidx_exifinterface_version}"
+    implementation "androidx.transition:transition:${androidx_transition_version}"
+    // OkHttp3 versions above 3.12.x don't support pre-Lollipop Android versions (API 21)
+    implementation "com.squareup.okhttp3:okhttp:5.1.0"
+    implementation 'androidx.core:core-ktx:1.16.0'
 }
