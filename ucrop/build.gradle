@@ -1,9 +1,6 @@
-plugins {
-    id 'com.android.library'
-    id 'org.jetbrains.kotlin.android'
-    id 'maven-publish'
-    id 'org.jetbrains.kotlin.plugin.compose' version '2.2.0'
-}
+apply plugin: 'com.android.library'
+apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'maven-publish'
 
 android {
     compileSdk 36
@@ -33,16 +30,12 @@ android {
     sourceSets.main {
         jni.srcDirs = []
     }
-    kotlin {
-        jvmToolchain(17)
-    }
-
+    buildToolsVersion '36.0.0'
     buildFeatures {
-        compose = true
         buildConfig = true // Enable the BuildConfig feature
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.12"
+    kotlinOptions {
+        jvmTarget = '17'
     }
     publishing {
         singleVariant("release") {}
@@ -58,13 +51,10 @@ publishing {
     }
 }
 
-
 dependencies {
     implementation "androidx.appcompat:appcompat:${androidx_appcompat_version}"
     implementation "androidx.exifinterface:exifinterface:${androidx_exifinterface_version}"
     implementation "androidx.transition:transition:${androidx_transition_version}"
     implementation "com.squareup.okhttp3:okhttp:5.1.0"
     implementation 'androidx.core:core-ktx:1.16.0'
-    implementation platform('androidx.compose:compose-bom:2025.06.01')
-    implementation 'androidx.compose.ui:ui'
 }
