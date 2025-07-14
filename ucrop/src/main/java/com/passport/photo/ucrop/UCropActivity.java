@@ -846,10 +846,10 @@ public class UCropActivity extends AppCompatActivity {
         controller.setAppearanceLightStatusBars(true);
         controller.setAppearanceLightNavigationBars(false);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             // Disable navigation bar contrast enforcement
             window.setNavigationBarContrastEnforced(false);
-        }
+        }*/
     }
 
 }
