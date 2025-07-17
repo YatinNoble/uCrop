@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
 }
 
 android {
@@ -24,6 +25,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
+    kotlin {
+        jvmToolchain {17}
+    }
     lintOptions {
         abortOnError false
     }
@@ -38,11 +42,12 @@ android {
     buildFeatures {
         buildConfig = true // Enable the BuildConfig feature
     }
+    ndkVersion '29.0.13599879 rc2'
 }
 
 dependencies {
     implementation "androidx.appcompat:appcompat:${androidx_appcompat_version}"
-    implementation "androidx.core:core:${androidx_core_version}"
+    implementation "androidx.core:core-ktx:${androidx_core_version}"
     implementation "androidx.constraintlayout:constraintlayout:${constraintlayout_version}"
     implementation "com.squareup.okhttp3:okhttp:5.1.0"
     implementation project(':ucrop')

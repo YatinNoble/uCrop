@@ -34,12 +34,13 @@ android {
     buildFeatures {
         buildConfig = true // Enable the BuildConfig feature
     }
-    kotlinOptions {
-        jvmTarget = '17'
+    kotlin {
+        jvmToolchain {17}
     }
     publishing {
         singleVariant("release") {}
     }
+    ndkVersion '29.0.13599879 rc2'
 }
 publishing {
     publications {
@@ -56,5 +57,5 @@ dependencies {
     implementation "androidx.exifinterface:exifinterface:${androidx_exifinterface_version}"
     implementation "androidx.transition:transition:${androidx_transition_version}"
     implementation "com.squareup.okhttp3:okhttp:5.1.0"
-    implementation 'androidx.core:core-ktx:1.16.0'
+    implementation "androidx.core:core-ktx:${androidx_core_version}"
 }
