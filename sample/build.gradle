@@ -43,11 +43,12 @@ android {
         buildConfig = true // Enable the BuildConfig feature
     }
     ndkVersion '29.0.13599879 rc2'
+    buildToolsVersion '36.0.0'
 }
 
 dependencies {
     implementation "androidx.appcompat:appcompat:${androidx_appcompat_version}"
-    implementation "androidx.core:core-ktx:${androidx_core_version}"
+    implementation "androidx.core:core-ktx:1.16.0"
     implementation "androidx.constraintlayout:constraintlayout:${constraintlayout_version}"
     implementation "com.squareup.okhttp3:okhttp:5.1.0"
     implementation project(':ucrop')
