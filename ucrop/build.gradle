@@ -10,11 +10,19 @@ android {
         minSdk 23
         targetSdk 36
         vectorDrawables.useSupportLibrary = true
+        externalNativeBuild {
+            cmake {
+                arguments "-DANDROID_SUPPORT_FLEXIBLE_PAGE_SIZES=ON"
+            }
+        }
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            ndk {
+                debugSymbolLevel = "FULL"
+            }
         }
     }
     compileOptions {
@@ -26,11 +34,13 @@ android {
     }
 
     resourcePrefix 'ucrop_'
-
-    sourceSets.main {
-        jni.srcDirs = []
+    ndkVersion '27.0.12077973'
+    packagingOptions {
+        jniLibs {
+            useLegacyPackaging = true
+        }
     }
-    buildToolsVersion '36.0.0'
+
     buildFeatures {
         buildConfig = true // Enable the BuildConfig feature
     }
@@ -40,12 +50,7 @@ android {
     publishing {
         singleVariant("release") {}
     }
-    ndkVersion '29.0.13599879 rc2'
-    packagingOptions {
-        jniLibs {
-            useLegacyPackaging = true
-        }
-    }
+
 }
 publishing {
     publications {

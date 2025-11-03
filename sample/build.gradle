@@ -19,6 +19,9 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            ndk {
+                debugSymbolLevel = "FULL"
+            }
         }
     }
     compileOptions {
@@ -42,7 +45,7 @@ android {
     buildFeatures {
         buildConfig = true // Enable the BuildConfig feature
     }
-    ndkVersion '29.0.13599879 rc2'
+    ndkVersion '27.0.12077973'
     buildToolsVersion '36.0.0'
 }
 

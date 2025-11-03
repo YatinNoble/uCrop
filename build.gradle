@@ -4,7 +4,7 @@ buildscript {
         androidx_exifinterface_version = "1.4.1"
         androidx_transition_version = "1.6.0"
         constraintlayout_version = "2.2.1"
-        agp_version = '8.11.1'
+        agp_version = '8.11.2'
         kotlin_version = '2.2.0'
     }
 
